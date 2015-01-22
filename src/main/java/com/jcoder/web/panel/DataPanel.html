@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Data</title>
+    </head>
+    <body>
+        <wicket:panel>
+            <div wicket:id="container" class="table-responsive">
+                <table class="dataview table table-bordered table-striped table-condensed">
+                    <tr class="headers">
+                        <th><span>Name</span></th>
+                        <th><span>Type</span></th>
+                    </tr>
+                    <tr wicket:id="data">
+                        <td><span wicket:id="name">[name]</span></td>
+                        <td><span wicket:id="type">[type]</span></td>
+                    </tr>
+                </table>
+            </div>
+        </wicket:panel>
+    </body>
+</html>
