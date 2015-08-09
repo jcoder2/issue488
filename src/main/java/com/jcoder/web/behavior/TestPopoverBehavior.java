@@ -19,7 +19,8 @@ public class TestPopoverBehavior extends RichPopoverBehavior {
                                .withPlacement( TooltipConfig.Placement.right );
         
     private DataPanel body = null;
-    
+    private boolean bodyEnabled = false;
+
     /**
      * @param label
      */
@@ -35,6 +36,14 @@ System.out.println("New data panel");
     
     @Override
     public void onEvent(Component component, IEvent<?> event) {
-        if( body != null ) body.onEvent( event );
+        if( body != null && isBodyEnabled() ) body.onEvent( event );
+    }
+
+    public boolean isBodyEnabled() {
+        return bodyEnabled;
+    }
+
+    public void setBodyEnabled(boolean bodyEnabled) {
+        this.bodyEnabled = bodyEnabled;
     }
 }
