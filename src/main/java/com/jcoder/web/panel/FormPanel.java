@@ -3,6 +3,7 @@ package com.jcoder.web.panel;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormChoiceComponentUpdatingBehavior;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.event.Broadcast;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.form.Form;
@@ -61,9 +62,14 @@ public class FormPanel extends Panel {
 	
     private WebMarkupContainer createLink( final String markupId ){
                 
-    	TestPopoverBehavior behaviour = 
+    	final TestPopoverBehavior behaviour =
                 new TestPopoverBehavior( Model.of( "RichPopover" ) );
-        WebMarkupContainer linkContainer = new WebMarkupContainer( markupId );
+        AjaxLink<Void> linkContainer = new AjaxLink<Void>(markupId) {
+            @Override
+            public void onClick(AjaxRequestTarget target) {
+                behaviour.setBodyEnabled(!behaviour.isBodyEnabled());
+            }
+        };
         linkContainer.add( behaviour );
 //        linkContainer.setOutputMarkupId( true );
         
